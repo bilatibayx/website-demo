@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shine Online Shop</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7fc;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    header p {
+      font-size: 18px;
+      margin-top: 5px;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #2563eb;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Categories Section */
+    .categories {
+      background-color: #ffffff;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin: 30px 0;
+    }
+
+    .categories h2 {
+      margin: 0;
+      font-size: 28px;
+      color: #1e3a8a;
+    }
+
+    .categories ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .categories ul li {
+      display: inline-block;
+      margin: 0 15px;
+    }
+
+    .categories ul li a {
+      text-decoration: none;
+      font-size: 16px;
+      color: #1e3a8a;
+    }
+
+    .categories ul li a:hover {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+
+    /* Main Section */
+    .main-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 30px;
+    }
+
+    .product {
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      margin: 10px;
+      text-align: center;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-10px);
+    }
+
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product .details {
+      padding: 15px;
+    }
+
+    .product h2 {
+      font-size: 18px;
+      color: #1e3a8a;
+    }
+
+    .product p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .product .price {
+      font-size: 18px;
+      color: #1e3a8a;
+      font-weight: bold;
+    }
+
+    .product button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    .product button:hover {
+      background-color: #1d4ed8;
+    }
+
+    /* Footer Section */
+    footer {
+      background-color: #1e3a8a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header>
+    <h1>Shine Online Shop</h1>
+    <p>Your favorite online shopping destination!</p>
+  </header>
+
+  <!-- Navigation Section -->
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Shop</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- Categories Section -->
+  <div class="categories">
+    <h2>Browse Categories</h2>
+    <ul>
+      <li><a href="#">Bracelets</a></li>
+      <li><a href="#">Necklaces</a></li>
+      <li><a href="#">Earrings</a></li>
+      <li><a href="#">Watches</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content Section -->
+  <div class="main-container">
+    <div class="product">
+      <img src="https://i.ebayimg.com/images/g/S-UAAOSwEP9ckVoJ/s-l1200.jpg" alt="Shiny Bracelet">
+      <div class="details">
+        <h2>Shiny Bracelet</h2>
+        <p>A beautiful bracelet that shines in any light.</p>
+        <p class="price">₱1,250.00</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://www.bakersfinejewelry.com/cdn/shop/products/8C162012-B231-4AD8-A371-7EA1971C63A4_1445x.png?v=1662050764" alt="Shimmering Necklace">
+      <div class="details">
+        <h2>Shimmering Necklace</h2>
+        <p>A necklace that sparkles and catches the eye.</p>
+        <p class="price">₱2,500.00</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFWzA8a6JHa6lwIkhJGUp-Afi2k1ESrhn6xQ&s" alt="Glittery Earrings">
+      <div class="details">
+        <h2>Glittery Earrings</h2>
+        <p>Elegant earrings that shine with every movement.</p>
+        <p class="price">₱800.00</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://down-ph.img.susercontent.com/file/sg-11134201-7rcds-lt630kkn7pg176" alt="Shine Watch">
+      <div class="details">
+        <h2>Shine Watch</h2>
+        <p>A luxury watch with a polished shine.</p>
+        <p class="price">₱7,500.00</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2025 Shine Online Shop. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Simple JavaScript for interactive "Add to Cart" button
+    const buttons = document.querySelectorAll('.product button');
+    
+    buttons.forEach(button => {
+      button.addEventListener('click', function () {
+        alert('Item added to cart!');
+      });
+    });
+  </script>
+</body>
+
+</html>

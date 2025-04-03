@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('backgroundd.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .login-container {
+            background: lightskyblue;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        label {
+            font-size: 14px;
+            color: white;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: blue;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 35px;
+            cursor: pointer;
+            color: black;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: cornflowerblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: steelblue;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <form id="loginForm">
+            <h2>Login to Shine Online Shop</h2>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+                <span class="toggle-password">👁️</span>
+            </div>
+            <button type="submit">Submit</button>
+            <p id="error-message" class="error-message"></p>
+        </form>
+    </div>
+
+    <script>
+        let attemptCount = localStorage.getItem('attemptCount') || 0;
+        let lockTime = localStorage.getItem('lockTime') || 0;
+
+        const username = "admin123";
+        const password = "admin123";
+
+        const form = document.getElementById('loginForm');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const errorMessage = document.getElementById('error-message');
+        const togglePassword = document.querySelector('.toggle-password');
+
+        function updateLockStatus() {
+            if (lockTime > 0) {
+                const countdown = setInterval(() => {
+                    lockTime--;
+                    localStorage.setItem('lockTime', lockTime);
+                    errorMessage.textContent = `Please wait ${lockTime} seconds before trying again.`;
+                    if (lockTime <= 0) {
+                        clearInterval(countdown);
+                        attemptCount = 0;
+                        localStorage.setItem('attemptCount', attemptCount);
+                        localStorage.removeItem('lockTime');
+                        errorMessage.textContent = "";
+                    }
+                }, 1000);
+            }
+        }
+        updateLockStatus();
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            if (lockTime > 0) return;
+
+            if (usernameInput.value === username && passwordInput.value === password) {
+                alert("Login Successful!");
+                localStorage.removeItem('attemptCount');
+                localStorage.removeItem('lockTime');
+                window.location.href = "homepage.html";
+            } else {
+                attemptCount++;
+                localStorage.setItem('attemptCount', attemptCount);
+                if (attemptCount >= 3) {
+                    lockTime = 10;
+                    localStorage.setItem('lockTime', lockTime);
+                    errorMessage.textContent = "Too many wrong attempts. Please wait 10 seconds.";
+                    updateLockStatus();
+                } else {
+                    errorMessage.textContent = "Invalid username or password. Try again.";
+                }
+            }
+        });
+
+        togglePassword.addEventListener('click', () => {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                togglePassword.textContent = "🔒";
+            } else {
+                passwordInput.type = "password";
+                togglePassword.textContent = "👁️";
+            }
+        });
+    </script>
+</body>
+</html>
